@@ -3,12 +3,14 @@ class MenuModel {
   String subtitle;
   double price;
   String imageUrl;
+  bool isSelected;
 
   MenuModel({
     required this.title,
     required this.subtitle,
     required this.price,
     required this.imageUrl,
+    this.isSelected = false,
   });
 }
 
