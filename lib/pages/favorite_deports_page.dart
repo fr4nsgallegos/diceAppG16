@@ -1,17 +1,34 @@
 import 'package:diceappg16/models/deport_model.dart';
 import 'package:flutter/material.dart';
 
-class FavoriteDeportsPage extends StatelessWidget {
-  const FavoriteDeportsPage({super.key});
+class FavoriteDeportsPage extends StatefulWidget {
+  @override
+  State<FavoriteDeportsPage> createState() => _FavoriteDeportsPageState();
+}
 
-  Widget buildItem(String deporte) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(width: 1.5, color: Colors.orange),
+class _FavoriteDeportsPageState extends State<FavoriteDeportsPage> {
+  List<DeportModel> favoriteDeportList = [];
+
+  Widget buildItem(DeportModel deporModel) {
+    return GestureDetector(
+      onTap: () {
+        if (deporModel.isFavorite == false) {
+          deporModel.isFavorite = true;
+          favoriteDeportList.add(deporModel);
+        } else {
+          deporModel.isFavorite = false;
+          favoriteDeportList.remove(deporModel);
+        }
+        setState(() {});
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(width: 1.5, color: Colors.orange),
+        ),
+        child: Text(deporModel.nombre, style: TextStyle(fontSize: 18)),
       ),
-      child: Text(deporte, style: TextStyle(fontSize: 18)),
     );
   }
 
@@ -43,7 +60,7 @@ class FavoriteDeportsPage extends StatelessWidget {
                 alignment: WrapAlignment.center, //alineación
                 children: [
                   for (int i = 0; i < deportList.length; i++)
-                    buildItem(deportList[i].nombre),
+                    buildItem(deportList[i]),
                 ],
               ),
               Divider(color: Colors.black, height: 64, thickness: 3),
