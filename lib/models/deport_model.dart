@@ -1,16 +1,16 @@
 class DeportModel {
-  String nombre;
+  String name;
   bool isFavorite;
 
-  DeportModel({required this.nombre, this.isFavorite = false});
+  DeportModel({required this.name, this.isFavorite = false});
 }
 
-List<DeportModel> deportList = [
-  DeportModel(nombre: "Gimnasia"),
-  DeportModel(nombre: "Crossfit"),
-  DeportModel(nombre: "Baloncesto"),
-  DeportModel(nombre: "Natación"),
-  DeportModel(nombre: "Golf"),
-  DeportModel(nombre: "Tenis"),
-  DeportModel(nombre: "Balonmano"),
+List<DeportModel> deportsList = [
+  DeportModel(name: "Gimnasia"),
+  DeportModel(name: "Crossfit"),
+  DeportModel(name: "Baloncesto"),
+  DeportModel(name: "Natación"),
+  DeportModel(name: "Golf"),
+  DeportModel(name: "Tenis"),
+  DeportModel(name: "Balonmano"),
 ];
